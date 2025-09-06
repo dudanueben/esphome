@@ -341,6 +341,16 @@ void Inkplate6::display1b_() {
     clean_fast_(0, 5);
     clean_fast_(2, 1);
     clean_fast_(1, 15);
+  } else if (this->model_ == INKPLATE_6_FLICK) {
+    clean_fast_(0, 5);
+    clean_fast_(1, 15);
+    clean_fast_(2, 1);
+    clean_fast_(0, 15);
+    clean_fast_(2, 1);
+    clean_fast_(1, 15);
+    clean_fast_(2, 1);
+    clean_fast_(0, 15);
+    clean_fast_(2, 1);
   } else {
     clean_fast_(0, 1);
     clean_fast_(1, 21);
@@ -464,6 +474,16 @@ void Inkplate6::display3b_() {
     clean_fast_(0, 5);
     clean_fast_(2, 1);
     clean_fast_(1, 15);
+  } else if (this->model_ == INKPLATE_6_FLICK) {
+    clean_fast_(0, 5);
+    clean_fast_(1, 15);
+    clean_fast_(2, 1);
+    clean_fast_(0, 15);
+    clean_fast_(2, 1);
+    clean_fast_(1, 15);
+    clean_fast_(2, 1);
+    clean_fast_(0, 15);
+    clean_fast_(2, 1);
   } else {
     clean_fast_(0, 1);
     clean_fast_(1, 21);
@@ -504,7 +524,7 @@ void Inkplate6::display3b_() {
         GPIO.out_w1tc = data_mask | clock;
       }
       // New Inkplate6 panel doesn't need last clock
-      if (this->model_ != INKPLATE_6_V2) {
+      if (this->model_ != INKPLATE_6_V2 && this->model_ != INKPLATE_6_FLICK) {
         GPIO.out_w1ts = clock;
         GPIO.out_w1tc = data_mask | clock;
       }
@@ -561,7 +581,7 @@ bool Inkplate6::partial_update_() {
         GPIO.out_w1tc = data_mask | clock;
       }
       // New Inkplate6 panel doesn't need last clock
-      if (this->model_ != INKPLATE_6_V2) {
+      if (this->model_ != INKPLATE_6_V2 && this->model_ != INKPLATE_6_FLICK) {
         GPIO.out_w1ts = clock;
         GPIO.out_w1tc = data_mask | clock;
       }
